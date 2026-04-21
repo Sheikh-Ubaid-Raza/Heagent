@@ -8,7 +8,7 @@ export interface TeamMember {
 export const teamMembers: TeamMember[] = [
   {
     name: "Ubaid Raza",
-    role: "Founder & CEO",
+    role: "Co-Founder & CEO",
     bio: "Medical professional with pre-medical background and expertise in web development, AI, and agentic systems. Passionate about leveraging technology to solve healthcare challenges.",
     image: "/images/ubaid.png",
   },
