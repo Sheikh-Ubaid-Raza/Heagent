@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 import {
   Mail,
   Linkedin,
@@ -19,13 +20,13 @@ import {
   Calendar,
 } from "lucide-react";
 
-const FORMSPREE_URL = "https://formspree.io/f/your_endpoint_here";
-const CALENDLY_URL = "https://calendly.com/heagent/demo";
+const CALENDLY_URL = "https://calendly.com/heagent-site/15-min-meeting";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   organization: z.string().optional(),
+  inquiryType: z.string().optional(),
   message: z.string().min(10, "Message must be at least 10 characters"),
   privacyConsent: z.boolean().refine((val) => val === true, {
     message: "You must agree to the Privacy Policy to proceed",
@@ -51,13 +52,14 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: data.name,
           email: data.email,
           organization: data.organization ?? "",
+          inquiryType: data.inquiryType ?? "",
           message: data.message,
         }),
       });
@@ -67,19 +69,21 @@ const Contact = () => {
         reset();
         toast({
           title: "Message sent!",
-          description: "We'll get back to you as soon as possible.",
+          description: "We'll be in touch within 1 business day.",
         });
       } else {
         toast({
-          title: "Submission failed",
-          description: "Please try again or email us at info@heagent.site",
+          title: "Something went wrong",
+          description:
+            "Please email us directly at contact@heagent.site",
           variant: "destructive",
         });
       }
     } catch {
       toast({
         title: "Network error",
-        description: "Please check your connection and try again.",
+        description:
+          "Something went wrong. Please email us directly at contact@heagent.site",
         variant: "destructive",
       });
     }
@@ -90,7 +94,7 @@ const Contact = () => {
       <div className="min-h-screen pt-20 flex items-center justify-center">
         <SEO
           title="Contact Heagent | Request a Demo"
-          description="Get in touch with Heagent to schedule a demo, ask about our healthcare AI products, or explore partnership opportunities for your hospital, clinic, or diagnostic center."
+          description="Get in touch with Heagent to request a demo or learn about our AI healthcare solutions."
           canonical="/contact"
         />
         <div className="container mx-auto px-4">
@@ -100,7 +104,7 @@ const Contact = () => {
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Thank You!</h1>
             <p className="text-xl text-muted-foreground mb-8">
-              We've received your message and will get back to you soon.
+              Message sent! We'll be in touch within 1 business day.
             </p>
             <Button
               onClick={() => setSubmitted(false)}
@@ -119,7 +123,7 @@ const Contact = () => {
     <div className="min-h-screen pt-20">
       <SEO
         title="Contact Heagent | Request a Demo"
-        description="Get in touch with Heagent to schedule a demo, ask about our healthcare AI products, or explore partnership opportunities for your hospital, clinic, or diagnostic center."
+        description="Get in touch with Heagent to request a demo or learn about our AI healthcare solutions."
         canonical="/contact"
       />
 
@@ -145,6 +149,11 @@ const Contact = () => {
                 <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
 
                 <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
+                  {/* Honeypot — hidden from real users, bots fill it */}
+                  <div className="hidden" aria-hidden="true">
+                    <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
+                  </div>
+
                   {/* Name */}
                   <div>
                     <Label htmlFor="name">
@@ -199,6 +208,23 @@ const Contact = () => {
                     />
                   </div>
 
+                  {/* Inquiry Type */}
+                  <div>
+                    <Label htmlFor="inquiryType">Inquiry Type</Label>
+                    <select
+                      id="inquiryType"
+                      className="mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      {...register("inquiryType")}
+                    >
+                      <option value="">Select inquiry type</option>
+                      <option value="demo">Request a Demo</option>
+                      <option value="partnership">Partnership</option>
+                      <option value="investment">Investment / Media</option>
+                      <option value="general">General Question</option>
+                      <option value="career">Career Opportunity</option>
+                    </select>
+                  </div>
+
                   {/* Message */}
                   <div>
                     <Label htmlFor="message">
@@ -241,12 +267,12 @@ const Contact = () => {
                             className="text-sm text-muted-foreground leading-relaxed cursor-pointer"
                           >
                             I agree to the{" "}
-                            <a
-                              href="/contact"
+                            <Link
+                              to="/privacy-policy"
                               className="text-accent underline hover:text-accent/80"
                             >
                               Privacy Policy
-                            </a>{" "}
+                            </Link>{" "}
                             and acknowledge that my data is handled securely in compliance with
                             applicable healthcare data regulations (HIPAA / GDPR).{" "}
                             <span className="text-destructive" aria-hidden="true">*</span>
@@ -283,7 +309,7 @@ const Contact = () => {
                   </Button>
 
                   <p className="text-sm text-muted-foreground text-center">
-                    We typically respond within 24–48 hours
+                    We typically respond within 1 business day
                   </p>
                 </form>
               </div>
@@ -301,21 +327,21 @@ const Contact = () => {
 
               <div className="space-y-6">
                 <a
-                  href="mailto:info@heagent.site"
+                  href="mailto:contact@heagent.site"
                   className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-accent/50 transition-all group"
-                  aria-label="Send us an email at info@heagent.site"
+                  aria-label="Send us an email at contact@heagent.site"
                 >
                   <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
                     <Mail className="h-6 w-6 text-accent" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email Us</h3>
-                    <p className="text-muted-foreground text-sm">info@heagent.site</p>
+                    <p className="text-muted-foreground text-sm">contact@heagent.site</p>
                   </div>
                 </a>
 
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/heagent"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-accent/50 transition-all group"
@@ -331,7 +357,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                  href="https://github.com"
+                  href="https://github.com/heagent-site"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-accent/50 transition-all group"
@@ -355,7 +381,7 @@ const Contact = () => {
                     <p className="text-muted-foreground text-sm">
                       Remote-first company
                       <br />
-                      Serving healthcare worldwide
+                      Building for global healthcare
                     </p>
                   </div>
                 </div>

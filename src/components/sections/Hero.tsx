@@ -30,8 +30,8 @@ export const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Deploy intelligent AI agents to handle repetitive tasks, lab operations, and data
-            management. Save time, reduce errors, and focus entirely on patient care.
+            From lab diagnostics to clinical documentation — Heagent builds AI
+            agents that give healthcare professionals their time back.
           </p>
 
           {/* CTAs */}
@@ -41,10 +41,10 @@ export const Hero = () => {
               size="lg"
               className="bg-teal-500 hover:bg-teal-400 active:scale-95 text-white text-lg px-8 shadow-lg shadow-teal-500/30 transition-all group"
             >
-              <Link to="/contact">
+              <a href="https://calendly.com/heagent-site/15-min-meeting" target="_blank" rel="noopener noreferrer">
                 Request Demo
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </a>
             </Button>
             <Button
               asChild
@@ -59,16 +59,16 @@ export const Hero = () => {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">2+</div>
-              <div className="text-sm text-muted-foreground">AI Products</div>
+              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">9+</div>
+              <div className="text-sm text-muted-foreground">AI Solutions in Development</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">70%</div>
-              <div className="text-sm text-muted-foreground">Time Saved</div>
+              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">24/7</div>
+              <div className="text-sm text-muted-foreground">AI Availability</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">100%</div>
-              <div className="text-sm text-muted-foreground">Healthcare Focused</div>
+              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">3</div>
+              <div className="text-sm text-muted-foreground">Healthcare Domains</div>
             </div>
           </div>
         </div>

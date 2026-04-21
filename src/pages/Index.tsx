@@ -1,8 +1,8 @@
 import { SEO } from "@/components/SEO";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { WhyHeagent } from "@/components/sections/WhyHeagent";
 import { ProductsSection } from "@/components/sections/ProductsSection";
-import { TeamSection } from "@/components/sections/TeamSection";
 import { Newsletter } from "@/components/sections/Newsletter";
 
 const Index = () => {
@@ -10,12 +10,13 @@ const Index = () => {
     <div className="min-h-screen">
       <SEO
         title="Heagent | AI-Powered Healthcare Automation"
-        description="Heagent automates clinical workflows, lab diagnostics, and hospital operations for healthcare providers using advanced Agentic AI. Reduce errors, save time, and focus on patient care."
+        description="Heagent builds AI agents that automate clinical workflows, lab diagnostics, and healthcare data management. Built by medical professionals."
+        canonical="/"
       />
       <Hero />
       <HowItWorks />
+      <WhyHeagent />
       <ProductsSection />
-      <TeamSection />
       <Newsletter />
     </div>
   );

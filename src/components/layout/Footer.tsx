@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Mail, Linkedin, Github } from "lucide-react";
 
 export const Footer = () => {
-  const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     Company: [
@@ -10,8 +9,10 @@ export const Footer = () => {
       { name: "Products", path: "/products" },
       { name: "Contact", path: "/contact" },
     ],
-    Resources: [
-      { name: "Home", path: "/" },
+    Legal: [
+      { name: "Privacy Policy", path: "/privacy-policy" },
+      { name: "Terms of Service", path: "/terms-of-service" },
+      { name: "Contact", path: "/contact" },
     ],
   };
 
@@ -33,14 +34,14 @@ export const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="mailto:info@heagent.site"
+                href="mailto:contact@heagent.site"
                 className="text-muted-foreground hover:text-accent transition-colors"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/heagent"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-accent transition-colors"
@@ -49,7 +50,7 @@ export const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/heagent-site"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-accent transition-colors"
@@ -66,7 +67,7 @@ export const Footer = () => {
               <h3 className="font-semibold mb-4 text-foreground">{category}</h3>
               <ul className="space-y-2">
                 {links.map((link) => (
-                  <li key={link.path}>
+                  <li key={link.name + link.path}>
                     <Link
                       to={link.path}
                       className="text-sm text-muted-foreground hover:text-accent transition-colors"
@@ -83,13 +84,13 @@ export const Footer = () => {
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} Heagent. All rights reserved.
+              © 2026 Heagent. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm text-muted-foreground">
-              <Link to="/contact" className="hover:text-accent transition-colors">
+              <Link to="/privacy-policy" className="hover:text-accent transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/contact" className="hover:text-accent transition-colors">
+              <Link to="/terms-of-service" className="hover:text-accent transition-colors">
                 Terms of Service
               </Link>
             </div>

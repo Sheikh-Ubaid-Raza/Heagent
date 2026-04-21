@@ -33,7 +33,7 @@ const Products = () => {
     <div className="min-h-screen pt-20">
       <SEO
         title="Healthcare AI Products | Heagent"
-        description="Explore Heagent's suite of AI products — Lab Tester AI, AI Clinical Notes, Smart Triage System, and more. Purpose-built to automate clinical workflows for hospitals, clinics, and diagnostic labs."
+        description="Explore Heagent's AI-powered healthcare products including Lab Tester AI, Clinical Notes, and Smart Medication Tracker."
         canonical="/products"
       />
       {/* Hero Section */}
@@ -89,7 +89,13 @@ const Products = () => {
                 key={product.id}
                 className="bg-card rounded-2xl p-6 shadow-card hover:shadow-elegant transition-all duration-300 border border-border hover:border-accent/50 group cursor-pointer animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => setSelectedProduct(product)}
+                onClick={() => {
+                  if (product.id === "lab-tester-ai") {
+                    window.location.href = "/products/lab-tester-ai";
+                  } else {
+                    setSelectedProduct(product);
+                  }
+                }}
               >
                 <div className="flex items-start justify-between mb-4">
                   <Badge className={`${statusColors[product.status]} border`}>
@@ -150,8 +156,8 @@ const Products = () => {
               Interested in Our Products?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Get in touch to learn more about how our AI solutions can help your healthcare
-              organization
+              Interested in early access to Lab Tester AI or want to collaborate on our
+              upcoming products? Let's connect.
             </p>
             <Button asChild size="lg" className="bg-gradient-accent hover:opacity-90">
               <Link to="/contact">

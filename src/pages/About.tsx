@@ -6,8 +6,8 @@ const About = () => {
   return (
     <div className="min-h-screen pt-20">
       <SEO
-        title="About Heagent | Healthcare AI Company"
-        description="Meet the team behind Heagent — medical professionals and AI engineers building intelligent automation tools for hospitals, clinics, and diagnostic labs. Discover our mission and medical network."
+        title="About Heagent | Healthcare AI Co-Founders"
+        description="Meet the co-founders of Heagent — medical professionals building AI solutions for healthcare workflows and automation."
         canonical="/about"
       />
       {/* Hero Section */}
@@ -18,7 +18,7 @@ const About = () => {
               About Heagent
             </h1>
             <p className="text-xl text-white/90">
-              Medical professionals building AI solutions for healthcare
+              Built by clinicians. Powered by AI. Designed for healthcare.
             </p>
           </div>
         </div>

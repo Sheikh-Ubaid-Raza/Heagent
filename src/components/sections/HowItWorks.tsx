@@ -12,7 +12,7 @@ export const HowItWorks = () => {
       icon: Zap,
       title: "Build AI Agents",
       description:
-        "Our agentic AI systems learn and adapt to automate these tasks intelligently, maintaining accuracy and compliance.",
+        "We deploy custom AI agents trained on your specific workflows, ensuring accuracy, compliance, and seamless integration.",
     },
     {
       icon: CheckCircle,

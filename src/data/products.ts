@@ -142,29 +142,5 @@ export const products: Product[] = [
     "Integration with hospital EMR/EHR systems"
   ],
   targetUsers: ["Hospitals", "Clinics", "Doctors", "Nurses", "ICU Staff"]
-},
-{
-  id: "ai-mdcat-tutor",
-  name: "MDCAT Mentor",
-  description: "A fully personalized AI tutor that guides MDCAT students through their entire preparation journey",
-  longDescription:
-    "MDCAT Mentor is a personalized AI agent that behaves like a real human tutor. It teaches, tests, explains, and creates a customized study plan for every student. Students can upload their syllabus/PDF books, and the AI automatically analyzes the content, creates a timeline, generates daily lectures, administers quizzes, conducts full-length tests, and adapts explanations based on the student’s performance and learning style.",
-  status: "Idea",
-  features: [
-    "Personalized study plan and timetable",
-    "PDF syllabus & book analysis",
-    "Adaptive learning based on student response",
-    "Daily lecture generation",
-    "Topic explanation with visuals (images/videos)",
-    "Voice tests, weekly tests, and unit tests",
-    "Full-length mock exams",
-    "Automatic checking and feedback",
-    "Interrupt-friendly sessions (student can ask anytime)",
-    "Progress tracking & performance analytics",
-    "Login/signup system with partial guest access",
-    "AI-based content simplification",
-    "AI voice + future AI teacher video support"
-  ],
-  targetUsers: ["MDCAT Students", "FSc Students", "Pre-med Students"]
 }
 ];

@@ -265,8 +265,8 @@ All design tokens are defined in `src/index.css` for consistency.
 ## 🤝 Support
 
 For questions or support:
-- **Email:** contact@agentiousai.site
-- **Website:** [agentiousai.site](https://agentiousai.site)
+- **Email:** contact@heagent.site
+- **Website:** [heagent.site](https://www.heagent.site)
 
 ---
 

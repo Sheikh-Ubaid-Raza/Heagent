@@ -7,8 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Mail, Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const FORMSPREE_URL = "https://formspree.io/f/your_endpoint_here";
-
 const newsletterSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
 });
@@ -30,10 +28,10 @@ export const Newsletter = () => {
 
   const onSubmit = async (data: NewsletterFormData) => {
     try {
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch("/api/subscribe", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: data.email, source: "Newsletter" }),
       });
       if (res.ok) {
         setSubscribed(true);
